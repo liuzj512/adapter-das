@@ -97,3 +97,7 @@ vLLM 0.33/gfx936 的 C4 indexer 候选通过 `ops.vllm_sparse_indexer: native`
 CLI 向导（`tools/hcu_config_wizard.py`）是其命令行形态；`--autotune` 变体=目标机自动探测+实测选档（平台画像→逐算子三门→阶梯降档带理由，见 [autotune.md](autotune.md)）。注意 UI 内嵌的
 目录/配方是代码快照，BACKEND_CATALOG 或 cookbook 变更后需同步（纯函数段
 在文件内 `/*==PURE-BEGIN*/ ... /*==PURE-END*/` 标记之间）。
+
+### HY3 prefill Graph 兼容开关
+
+`HCU_DISABLE_OPS=prefill_graph_driver` 在新进程中跳过流状态查询适配，保留安装前的绑定。默认启用适配；只改变驱动查询，保留 prefill Graph，不改变硬件身份。
